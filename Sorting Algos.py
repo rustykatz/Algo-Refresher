@@ -91,8 +91,44 @@ def insertionSort(arr):
     return arr
 
 # 4) Quick Sort
+# Time Complexity WORST CASE - 0(n^2)
+#   -> Pivot is always largest or smallest elem
+# Time Complexity AVERAGE CASE - 0(nlogn)
+# Time Complexity BEST CASE - 0(nlogn)
+#   -> Occurs when middle is always picked as pivot
+# Steps: 1. Pick a pivot
+#        2. Place smaller than pivot left, bigger right
+
+# Gets pivot and places in correct position in sorted array
+# Smaller items go to left of pivot, bigger to the right
+
+
+def partition(arr, low, high):
+    pivot = arr[high]
+    i = low - 1
+
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            i += 1
+            arr[i] = arr[j]
+            arr[j] = arr[i]
+
+    arr[i+1] = arr[high]
+    arr[high] = arr[i+1]
+    return (i+1)
+
+
+def quickSort(arr, low, high):
+    if low < high:
+        p = partition(arr, low, high)
+
+        quickSort(arr, low, p-1)
+        quickSort(arr, p+1, high)
+
+    return arr
 
 # 5) Heap Sort
+
 
 def printError(name, unsortedArr, key, sort):
     print(
@@ -169,13 +205,16 @@ def main():
 
 
         # Quick Sort
-        # qsort_time_start = time.time()
-        # qsort = shellSort(testArr)
-        # qsort_time_end = time.time()
-        # qsort_avg_time = qsort_time_end - qsort_time_start
+        qsort_time_start = time.time_ns()
+        qsort = quickSort(testArr, 0, len(testArr) - 1)
+        qsort_time_end = time.time_ns()
+        qsort_avg_time = qsort_time_end - qsort_time_start
 
-        # if qsort == key:
-        #     qsort_passed += 1
+        if qsort == key:
+            qsort_passed += 1
+        else:
+            name = "Quick Sort"
+            printError(name, unsortedArr, key, qsort)
 
         # # Selection Sort
         # heapsort_time_start = time.time()
@@ -195,8 +234,8 @@ def main():
     print("%d / %d Insertion Sort test cases passed in '%d' ns!" %
         (isort_passed, num_tests, (isort_avg_time / num_tests)))
 
-    # print("%d / %d Shell Sort test cases passed in '%d' time!" %
-    #     (qsort_passed, num_tests, (qsort_avg_time / num_tests)))
+    print("%d / %d Quick Sort test cases passed in '%d' time!" %
+        (qsort_passed, num_tests, (qsort_avg_time / num_tests)))
 
     # print("%d / %d Selection Sort test cases passed in '%d' time!" %
     #     (heapsort_passed, num_tests, (heapsort_avg_time / num_tests)))
