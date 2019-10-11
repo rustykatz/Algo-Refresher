@@ -67,14 +67,17 @@ def main():
     s = util.Stack()
     sFill = stackFill(s)
     sChk = stackCheck(sFill)
+    print('\n')
 
     q = util.Queue()
     qFill = queueFill(q)
     qChk = queueCheck(qFill)
+    print('\n')
 
     pq = []
     pqFill = priorityQueueFill(pq)
     pqChk = priorityQueueCheck(pqFill)
-
+    print('\n')
+    
 if __name__ == "__main__":
     main()

@@ -5,35 +5,41 @@ Utility Classes
 class Stack:
 
     def __init__(self):
-        self.list = []
+        self.stack = []
 
     def push(self, item):
-        self.list.append(item)
+        self.stack.append(item)
 
     def pop(self):
-        return self.list.pop()
+        return self.stack.pop()
     
     def isEmpty(self):
-        return len(self.list)==0
+        return len(self.stack)==0
+    
+    def size(self):
+        return len(self.stack())
 
     def __str__(self):
-        return str(self.list)
+        return str(self.stack)
 
 
 # First in First out 
 class Queue:
 
     def __init__(self):
-        self.list = []
+        self.queue = []
 
     def push(self, item):
-        self.list.insert(0,item)
+        self.queue.insert(0,item)
     
     def pop(self):
-        return self.list.pop()
+        return self.queue.pop()
     
     def isEmpty(self):
-        return len(self.list)==0
+        return len(self.queue)==0
+    
+    def size(self):
+        return len(self.queue)
 
     def __str__(self):
-        return str(self.list)
+        return str(self.queue)
