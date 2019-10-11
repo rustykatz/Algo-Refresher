@@ -62,6 +62,27 @@ def printPQ(arr):
     for x in pq:
         print(x, end=' ') 
 
+def dictFill(arr):
+    arr = dict(brand="Ford", model="Mustang",year="2019")
+    print(arr)
+    return(arr)
+
+def dictCheck(arr):
+    arr.popitem()
+    print(arr)
+    arr.pop("brand")
+    print(arr)
+    arr["brand"] = "Tesla"
+    # update multiple items
+    arr.update({"model":"Roaster", "year":"2020"})
+    print(arr)
+
+    if "model" in arr:
+        print("model is in dict")
+
+    for x,y in arr.items():
+        print(x,y)
+
 
 def main():
     s = util.Stack()
@@ -78,6 +99,11 @@ def main():
     pqFill = priorityQueueFill(pq)
     pqChk = priorityQueueCheck(pqFill)
     print('\n')
-    
+
+    d = {}
+    dFill = dictFill(d)
+    dChk = dictCheck(dFill)
+    print('\n')
+
 if __name__ == "__main__":
     main()
