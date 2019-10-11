@@ -10,7 +10,7 @@ class Stack:
     def push(self, item):
         self.list.append(item)
 
-    def pop(self, item):
+    def pop(self):
         return self.list.pop()
     
     def isEmpty(self):

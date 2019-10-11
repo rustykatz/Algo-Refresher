@@ -2,7 +2,7 @@
 Python Data Struct Refresher 
 """
 import util
-
+import heapq
 '''
 Stacks Are LiFo 
 push -> append
@@ -11,20 +11,16 @@ pop -> delete back
 def stackFill(arr):
     print("Filling Stack...")
     for i in range(0,10):
-        arr.append(i)
+        arr.push(i)
     return arr
 
 def stackCheck(arr):
     print("Init Arr: " + str(arr))
-    last = arr[-1]
     arr.pop()
-    print("Removed item '%s': " % (str(last)) + str(arr))
-    last = arr[-1]
+    print("Removed item: " + str(arr))
     arr.pop()
-    print("Removed item '%s': " % (str(last)) + str(arr))
+    print("Removed item: "  + str(arr))
     print("Res Arr: " + str(arr))
-    return(arr)
-
 
 '''
 Queues are FiFo
@@ -43,8 +39,28 @@ def queueCheck(arr):
     print("Dequeue: " + str(arr))
     arr.pop()
     print("Dequeue: " + str(arr))
+    print("Res Arr: " + str(arr)) 
 
-    print(arr) 
+def priorityQueueFill(arr):
+    print("Filling Priority Queue...")
+    val = ['Cat','Dog','Goat','Frog', 'Hyena','Lion','Tiger','Snake','Hippo','Moose']
+    for i in range(5):
+        heapq.heappush(arr,((i,val[i])))
+    heapq.heapify(arr)
+    return arr
+
+def priorityQueueCheck(arr):
+    print("Init Arr: " + str(arr))
+    heapq.heappop(arr)
+    print("Removing item: " + str(arr))
+    heapq.heappop(arr)
+    print("Removing item: " + str(arr))
+    print("Res Arr: " + str(arr))
+
+def printPQ(arr):
+    pq = list(arr)
+    for x in pq:
+        print(x, end=' ') 
 
 
 def main():
@@ -56,7 +72,9 @@ def main():
     qFill = queueFill(q)
     qChk = queueCheck(qFill)
 
-
+    pq = []
+    pqFill = priorityQueueFill(pq)
+    pqChk = priorityQueueCheck(pqFill)
 
 if __name__ == "__main__":
     main()
