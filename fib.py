@@ -6,10 +6,13 @@ def fibDP(n):
     if n == 0 or n==1:
         return n
     else:
-        for i in range(1,n):
+        print(f'{x} {y}',end=' ')
+        
+        for i in range(n-1):
             temp = x +y
             x = y
             y= temp
+            print(temp, end= ' ' )
     return temp
 
 # Fib using Recursion 
@@ -33,6 +36,7 @@ def main():
     #     print(fib(i), end=' ')
     # print('\n')
 
+    a =fibDP(5)
     '''
     for case in cases: 
         # Fib w/ DP 
